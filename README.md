@@ -1,7 +1,7 @@
 # 多人聊天室
 - 用户昵称新建
 
-  ![image-20200621195736791](imgs/image-20200621195736791.png)
+  ![image-20200621195736791](https://github.com/wzbwzt/chatRoom2.0_go/blob/master/imgs/image-20200621195736791.png)
 
 - 新建群；包括群主、群昵称、群成员；group_setup#群名
 
