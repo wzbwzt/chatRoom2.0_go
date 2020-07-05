@@ -77,7 +77,6 @@ func handleSend(conn net.Conn, name string) {
 		//读取标准输入
 		lineBytes, _, _ := reader.ReadLine()
 		lineStr := string(lineBytes)
-
 		//上传文件
 		//upload#文件名#文件路径
 		if strings.Index(lineStr,"upload") == 0{
@@ -89,22 +88,17 @@ func handleSend(conn net.Conn, name string) {
 			}
 			fileName := strs[1]
 			filePath := strs[2]
-
 			//构造数据包
 			dataPack := make([]byte, 0)
-
 			//写入数据包头部（upload#文件名）
 			header := make([]byte, 100)
 			copy(header,[]byte("upload#"+fileName+"#"))
 			dataPack = append(dataPack, header...)
-
 			//写入数据包身体（文件字节）
 			fileBytes, _ := ioutil.ReadFile(filePath)
 			dataPack = append(dataPack,fileBytes...)
-
 			//写给服务端
 			conn.Write(dataPack)
-
 		}else{
 			//发送到服务端
 			_, err := conn.Write(lineBytes)
